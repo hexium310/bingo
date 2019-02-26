@@ -47,7 +47,7 @@ const MouseOver = styled.div`
   width: 100%;
   height: 100%;
   z-index: 10;
-  font-size: 20vw;
+  font-size: 30vh;
   cursor: pointer;
 
   ${BingoButton}:not(:hover) & {
@@ -58,13 +58,13 @@ const MouseOver = styled.div`
 const FirstMouseOut = styled.div`
   ${buttonText}
 
-  font-size: 20vw;
+  font-size: 30vh;
 `;
 
 const MouseOut = styled.div`
   ${buttonText}
 
-  font-size: 28vw;
+  font-size: 45vh;
 
   ${MouseOver}:hover + & {
     opacity: 0.2;
