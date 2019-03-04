@@ -1,6 +1,6 @@
 import * as React from 'react';
-
 import styled, { css } from 'styled-components';
+import { random } from 'lodash';
 
 export interface BingoProps {
   setCount: React.Dispatch<React.SetStateAction<number>>;
@@ -73,23 +73,35 @@ const MouseOut = styled.div`
 
 export const Bingo: React.FunctionComponent<BingoProps> = ({ count, setCount, currentNumber }) => {
   const [clickable, setClickable] = React.useState(true);
+  const [number, setNumber] = React.useState(0);
 
   return (
     <BingoWrapper>
       <BingoButton>
         {
-          clickable && <MouseOver onClick={() => {
-            setCount(count + 1);
+          clickable && <MouseOver onClick={async () => {
+            const randomNumbers = Array(30).fill(0).map(() => random(0, 75));
+            setNumber(0);
             setClickable(false);
+            for (const randomNumber of randomNumbers) {
+              await new Promise(resolve => {
+                setTimeout(() => {
+                  setNumber(randomNumber);
+                  resolve();
+                }, 20);
+              });
+            }
+            setNumber(0);
+            setCount(count + 1);
             setTimeout(() => {
               setClickable(true);
-            }, 2000);
+            }, 3000);
           }}>抽選</MouseOver>
         }
         {
-          !currentNumber
+          !currentNumber && clickable
             ? <FirstMouseOut>抽選</FirstMouseOut>
-            : <MouseOut>{currentNumber}</MouseOut>
+            : <MouseOut>{number || currentNumber}</MouseOut>
         }
       </BingoButton>
     </BingoWrapper>
