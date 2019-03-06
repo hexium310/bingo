@@ -1,5 +1,5 @@
-import * as React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
 import { shuffle } from 'lodash';
 
 import { Header } from './Header';
