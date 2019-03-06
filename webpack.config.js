@@ -1,16 +1,13 @@
-import path from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const loaders = {
-  babel: {
-    loader: 'babel-loader',
-  },
   typescript: {
-    loader: 'awesome-typescript-loader',
+    loader: 'ts-loader',
   },
-}
+};
 
-export default {
+module.exports = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -19,18 +16,14 @@ export default {
   module: {
     rules: [
       {
-        test: /.jsx?$/,
-        exclude: /node_modules/,
-        use: loaders.babel,
-      },
-      {
         test: /.tsx?$/,
         use: loaders.typescript,
+        exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', 'jsx']
+    extensions: ['.ts', '.tsx', '.js'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -38,4 +31,4 @@ export default {
       filename: 'index.html',
     }),
   ],
-}
+};
