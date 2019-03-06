@@ -6,7 +6,7 @@ export interface BingoProps {
   setCount: React.Dispatch<React.SetStateAction<number>>;
   count: number;
   currentNumber: number;
-};
+}
 
 const BingoWrapper = styled.div`
   display: flex;
@@ -93,7 +93,11 @@ const MouseOut = styled.div`
   }
 `;
 
-export const Bingo: React.FunctionComponent<BingoProps> = ({ count, setCount, currentNumber }) => {
+export const Bingo: React.FunctionComponent<BingoProps> = ({
+  count,
+  setCount,
+  currentNumber
+}): React.ReactElement => {
   const [clickable, setClickable] = React.useState(true);
   const [number, setNumber] = React.useState(0);
 

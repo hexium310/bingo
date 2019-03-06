@@ -7,7 +7,7 @@ const Title = styled.h1`
   margin: 10px 0;
 `;
 
-export const Header = () => (
+export const Header: React.FunctionComponent = (): React.ReactElement => (
   <header>
     <Title>ビンゴ抽選機</Title>
   </header>

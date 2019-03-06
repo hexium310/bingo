@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
 const numberList = shuffle([...Array(75).keys()]);
 
-export const App = () => {
+export const App: React.FunctionComponent = (): React.ReactElement => {
   const [count, setCount] = React.useState(0);
 
   return (

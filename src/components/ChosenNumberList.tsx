@@ -57,17 +57,16 @@ const ChosenNumber = styled.div`
   font-size: 4vw;
 `
 
-export const ChosenNumberList = (props: ChosenNumberListProps) => {
+export const ChosenNumberList: React.FunctionComponent<ChosenNumberListProps> = (props): React.ReactElement => {
   const numberList = props.numberList.slice(0, props.count);
 
   return (
     <Wrapper>
       {numberList.reverse().map((v, i) => {
         return (
-          <NumberListItem>
+          <NumberListItem key={i}>
             {numberList.length - i}
             <NumberContainer
-              key={i}
               isLatestTen={i < 10}
             >
               <ChosenNumber>{v}</ChosenNumber>
