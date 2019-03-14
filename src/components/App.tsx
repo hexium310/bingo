@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const numberList = shuffle([...Array(75).keys()]);
+const numberList = shuffle([...Array(75).fill(0).map((_, i) => i + 1)]);
 
 export const App: React.FunctionComponent = (): React.ReactElement => {
   const [count, setCount] = React.useState(0);
